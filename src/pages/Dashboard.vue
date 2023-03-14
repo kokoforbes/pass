@@ -1,9 +1,13 @@
 <template>
-  <div></div>
+  <div>
+    <h3>Dashboard Page</h3>
+  </div>
 </template>
 
 <script>
 export default {
+  name: "DashboardPage",
+
   setup() {
     return {};
   },

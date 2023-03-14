@@ -1,9 +1,13 @@
 <template>
-  <div></div>
+  <div>
+    <h3>Activity Page</h3>
+  </div>
 </template>
 
 <script>
 export default {
+  name: "ActivityPage",
+
   setup() {
     return {};
   },

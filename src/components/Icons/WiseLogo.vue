@@ -31,7 +31,7 @@ export default {
   props: {
     size: {
       type: Number,
-      default: 54,
+      default: 85,
     },
   },
   computed: {

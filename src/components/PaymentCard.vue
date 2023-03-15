@@ -7,15 +7,15 @@
 
     <div class="payment-card__detail">
       <div class="card-row">
-        <p class="text-secondary">Account name:</p>
+        <p class="text-secondary text-medium">Account name:</p>
         <p class="text-dark text-bold">Barly Vallendito</p>
       </div>
       <div class="card-row">
-        <p class="text-secondary">Account number:</p>
+        <p class="text-secondary text-medium">Account number:</p>
         <p class="text-dark text-bold">9700 0023 4200 2900</p>
       </div>
       <div class="card-row">
-        <p class="text-secondary">Routing number:</p>
+        <p class="text-secondary text-medium">Routing number:</p>
         <p class="text-dark text-bold">084009519</p>
       </div>
     </div>
@@ -36,6 +36,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .payment-card {
+  max-width: 28rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -58,13 +59,6 @@ export default defineComponent({
       display: flex;
       gap: 0.5rem;
     }
-  }
-}
-
-@media (min-width: $breakpoint--md) {
-  .item-row {
-    flex-direction: row;
-    gap: 2rem;
   }
 }
 </style>

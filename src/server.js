@@ -7,7 +7,7 @@ export function makeServer({ environment = "development" } = {}) {
     },
 
     seeds(server) {
-      server.create("invoice", {
+      server.create("invoices", {
         id: "inv-2022-010",
         totalAmount: 4800,
         totalTax: 0,

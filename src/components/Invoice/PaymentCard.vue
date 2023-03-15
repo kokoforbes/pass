@@ -24,7 +24,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import WiseLogo from "./Icons/WiseLogo.vue";
+import WiseLogo from "../Icons/WiseLogo.vue";
 
 export default defineComponent({
   name: "PaymentCard",

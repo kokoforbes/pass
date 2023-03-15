@@ -5,7 +5,7 @@
       <div class="invoice-card__seller--detail">
         <!-- SELLER IMAGE -->
         <img
-          src="../assets/images/dipa.png"
+          src="../../assets/images/dipa.png"
           alt="seller logo"
           class="seller-img"
         />
@@ -62,7 +62,7 @@
       </div>
 
       <div class="invoice-card__details--bottom">
-        <!-- <item-row /> -->
+        <item-row />
       </div>
     </section>
     <!-- /DETAILS SECTION -->
@@ -110,12 +110,12 @@
 
 <script>
 import { defineComponent } from "vue";
-import CustomizeIcon from "./Icons/CustomizeIcon.vue";
+import CustomizeIcon from "../Icons/CustomizeIcon.vue";
+import ItemRow from "./ItemRow.vue";
 import PaymentCard from "./PaymentCard.vue";
-// import ItemRow from "./ItemRow.vue";
 
 export default defineComponent({
-  components: { CustomizeIcon, PaymentCard },
+  components: { CustomizeIcon, PaymentCard, ItemRow },
   name: "InvoiceCard",
   props: {
     // invoice: {
@@ -297,8 +297,6 @@ export default defineComponent({
       flex-direction: row;
       justify-content: space-between;
 
-      &__method {
-      }
       &__total {
         min-width: 16rem;
       }

@@ -79,9 +79,25 @@ a {
   padding-right: 5vw;
 }
 
+.text-right {
+  text-align: right;
+}
+
 // TEXT UTILITIES
 .text-bold {
   font-weight: 600;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-extraBold {
+  font-weight: 800;
 }
 
 .text-medium {

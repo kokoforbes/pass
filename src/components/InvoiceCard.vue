@@ -1,36 +1,52 @@
 <template>
   <div class="invoice-card bg-white">
-    <div class="invoice-card__seller">
-      <div class="invoice-card__seller--details">
-        <div class="seller-logo">
-          <!-- <img :src="require('/src/assets/images/dipa.png')" alt="logo" /> -->
-        </div>
+    <!-- SELLER INFO SECTION -->
+    <section class="invoice-card__seller">
+      <div class="invoice-card__seller--detail">
+        <!-- SELLER IMAGE -->
+        <img
+          src="../assets/images/dipa.png"
+          alt="seller logo"
+          class="seller-img"
+        />
+        <!-- /SELLER IMAGE -->
+
         <div class="seller-details">
-          <p class="text-bold text-primary">Dipa Inhouse</p>
-          <p class="text-secondary">hello@dipainhouse.com</p>
+          <p class="text-bold text-primary seller-name">Dipa Inhouse</p>
+          <p class="text-secondary text-medium">hello@dipainhouse.com</p>
         </div>
       </div>
       <div class="seller-address">
-        <p class="text-secondary">Ijen Boulevard Street 101</p>
-        <p class="text-secondary">Malang City, 65115</p>
-        <p class="text-secondary">East Java, Indonesia</p>
+        <p class="text-secondary text-medium">Ijen Boulevard Street 101</p>
+        <p class="text-secondary text-medium">Malang City, 65115</p>
+        <p class="text-secondary text-medium">East Java, Indonesia</p>
       </div>
-    </div>
-    <div class="invoice-card__jumbotron">
-      <div class="details-block">
-        <p class="text-primary">Invoice Number</p>
-        <p class="text-primary">inv-2022-010</p>
-        <p class="text-secondary">Issued Date: <span>11 Jan 2022</span></p>
-        <p class="text-secondary">Due Date: <span>18 Jan 2022</span></p>
+    </section>
+    <!-- /SELLER INFO SECTION -->
+
+    <!-- JUMBOTRON SECTION -->
+    <section class="invoice-card__jumbotron">
+      <div class="invoice-detail">
+        <p class="text-white text-bold">Invoice Number</p>
+        <p class="text-white text-uppercase text-bold">inv-2022-010</p>
+        <p class="text-white">
+          Issued Date: <span class="text-bold">11 Jan 2022</span>
+        </p>
+        <p class="text-white">
+          Due Date: <span class="text-bold">18 Jan 2022</span>
+        </p>
       </div>
       <div class="billing-address">
-        <p class="text-primary">Billed to</p>
-        <p class="text-secondary">zaky grizzly</p>
-        <p class="text-secondary">Monlight Agency LTD</p>
-        <p class="text-secondary">New York, USA</p>
+        <p class="text-white text-bold">Billed to</p>
+        <p class="text-white">zaky grizzly</p>
+        <p class="text-white">Monlight Agency LTD</p>
+        <p class="text-white">New York, USA</p>
       </div>
-    </div>
-    <div class="invoice-card__details">
+    </section>
+    <!-- /JUMBOTRON SECTION -->
+
+    <!-- DETAILS SECTION -->
+    <section class="invoice-card__details">
       <div class="invoice-card__details--top">
         <div>
           <p class="text-dark text-bold">Item Detail</p>
@@ -48,7 +64,8 @@
       <div class="invoice-card__details--bottom">
         <!-- <item-row /> -->
       </div>
-    </div>
+    </section>
+    <!-- /DETAILS SECTION -->
 
     <!-- PAYMENT SECTION -->
     <section class="invoice-card__payment">
@@ -108,9 +125,7 @@ export default defineComponent({
   },
 
   setup() {
-    return {
-      // essentialLinks: linksList,
-    };
+    return {};
   },
 });
 </script>
@@ -129,12 +144,49 @@ export default defineComponent({
     gap: 2rem;
   }
 
+  &__seller {
+    &--detail {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .seller-address {
+      p {
+        margin-bottom: 0.35rem;
+      }
+    }
+
+    .seller-name {
+      font-size: 1.25rem;
+      margin-bottom: 0.55rem;
+    }
+    .seller-img {
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      border-radius: 100%;
+    }
+  }
+
   &__jumbotron {
     background-color: $violet-blue;
     color: $white;
     border-radius: 1.125rem;
     padding: 2.25rem 2rem;
     margin: 2.5rem 0 1.25rem 0;
+
+    .invoice-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .billing-address {
+      p {
+        margin-bottom: 0.55rem;
+      }
+    }
   }
 
   &__details {
@@ -215,6 +267,23 @@ export default defineComponent({
     &__jumbotron {
       flex-direction: row;
       justify-content: space-between;
+    }
+
+    &__jumbotron {
+      .billing-address {
+        p {
+          text-align: right;
+          margin-bottom: 0.35rem;
+        }
+      }
+    }
+
+    &__seller {
+      .seller-address {
+        p {
+          text-align: right;
+        }
+      }
     }
 
     &__details {

@@ -12,14 +12,23 @@
         <!-- /SELLER IMAGE -->
 
         <div class="seller-details">
-          <p class="text-bold text-primary seller-name">Dipa Inhouse</p>
-          <p class="text-secondary text-medium">hello@dipainhouse.com</p>
+          <p class="text-bold text-primary seller-name">
+            {{ invoice.seller.name }}
+          </p>
+          <p class="text-secondary text-medium">{{ invoice.seller.email }}</p>
         </div>
       </div>
       <div class="seller-address">
-        <p class="text-secondary text-medium">Ijen Boulevard Street 101</p>
-        <p class="text-secondary text-medium">Malang City, 65115</p>
-        <p class="text-secondary text-medium">East Java, Indonesia</p>
+        <p class="text-secondary text-medium">
+          {{ invoice.seller.address.street }}
+        </p>
+        <p class="text-secondary text-medium">
+          {{ invoice.seller.address.city }}, {{ invoice.seller.address.zip }}
+        </p>
+        <p class="text-secondary text-medium">
+          {{ invoice.seller.address.state }},
+          {{ invoice.seller.address.country }}
+        </p>
       </div>
     </section>
     <!-- /SELLER INFO SECTION -->
@@ -28,19 +37,21 @@
     <section class="invoice-card__jumbotron">
       <div class="invoice-detail">
         <p class="text-white text-bold">Invoice Number</p>
-        <p class="text-white text-uppercase text-bold">inv-2022-010</p>
+        <p class="text-white text-uppercase text-bold">{{ invoice.id }}</p>
         <p class="text-white">
-          Issued Date: <span class="text-bold">11 Jan 2022</span>
+          Issued Date: <span class="text-bold">{{ invoice.issuedDate }}</span>
         </p>
         <p class="text-white">
-          Due Date: <span class="text-bold">18 Jan 2022</span>
+          Due Date: <span class="text-bold">{{ invoice.dueDate }}</span>
         </p>
       </div>
       <div class="billing-address">
         <p class="text-white text-bold">Billed to</p>
-        <p class="text-white">zaky grizzly</p>
-        <p class="text-white">Monlight Agency LTD</p>
-        <p class="text-white">New York, USA</p>
+        <p class="text-white">{{ invoice.billedTo.name }}</p>
+        <p class="text-white">{{ invoice.billedTo.company }}</p>
+        <p class="text-white">
+          {{ invoice.billedTo.state }}, {{ invoice.billedTo.country }}
+        </p>
       </div>
     </section>
     <!-- /JUMBOTRON SECTION -->
@@ -62,7 +73,7 @@
       </div>
 
       <div class="invoice-card__details--bottom">
-        <item-row />
+        <item-row v-for="item in invoice.items" :key="item.id" :item="item" />
       </div>
     </section>
     <!-- /DETAILS SECTION -->
@@ -76,7 +87,7 @@
           <p class="text-primary text-medium">Select Payment</p>
         </div>
 
-        <payment-card />
+        <payment-card :payment="invoice.payment" />
       </div>
       <!-- /PAYMENT METHOD -->
 
@@ -85,21 +96,21 @@
         <div class="subtotal">
           <div class="subtotal-row">
             <p class="text-dark text-bold">Sub Total</p>
-            <p class="text-dark text-bold">$4,800.00</p>
+            <p class="text-dark text-bold">${{ invoice.subTotal }}</p>
           </div>
           <div class="subtotal-row">
             <p class="text-secondary text-medium">Discount</p>
-            <p class="text-dark text-bold">$0.00</p>
+            <p class="text-dark text-bold">${{ invoice.discount }}</p>
           </div>
           <div class="subtotal-row">
             <p class="text-secondary text-medium">Total tax</p>
-            <p class="text-dark text-bold">$0.00</p>
+            <p class="text-dark text-bold">${{ invoice.totalTax }}</p>
           </div>
         </div>
 
         <div class="total-amount subtotal-row">
           <p class="text-secondary text-bold">Total Amount</p>
-          <p class="text-dark text-bold">$4,800.00</p>
+          <p class="text-dark text-bold">${{ invoice.totalAmount }}</p>
         </div>
       </div>
       <!-- /PAYMENT TOTAL -->
@@ -109,25 +120,20 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import CustomizeIcon from "../Icons/CustomizeIcon.vue";
 import ItemRow from "./ItemRow.vue";
 import PaymentCard from "./PaymentCard.vue";
 
-export default defineComponent({
+export default {
   components: { CustomizeIcon, PaymentCard, ItemRow },
   name: "InvoiceCard",
   props: {
-    // invoice: {
-    //   type: Object,
-    //   required: true,
-    // },
+    invoice: {
+      type: Object,
+      required: true,
+    },
   },
-
-  setup() {
-    return {};
-  },
-});
+};
 </script>
 
 <style lang="scss" scoped>
@@ -221,7 +227,6 @@ export default defineComponent({
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      border-bottom: $border;
       padding: 0 0 1.5rem 0;
     }
   }
@@ -240,6 +245,7 @@ export default defineComponent({
       }
     }
     &__total {
+      width: 100%;
       .subtotal {
         display: flex;
         flex-direction: column;
@@ -299,6 +305,7 @@ export default defineComponent({
 
       &__total {
         min-width: 16rem;
+        max-width: 40%;
       }
     }
   }

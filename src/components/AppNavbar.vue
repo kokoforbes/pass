@@ -85,6 +85,7 @@ export default defineComponent({
     padding-top: 1rem;
     max-width: $max-width;
     gap: calc(max(5vw, 5vh, 5vmin));
+    margin: 0 auto;
   }
 
   &__links {

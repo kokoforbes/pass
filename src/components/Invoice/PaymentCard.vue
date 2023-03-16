@@ -1,22 +1,22 @@
 <template>
   <div class="payment-card">
     <div class="payment-card__type">
-      <p class="text-dark text-bold">Wire Transfer</p>
+      <p class="text-dark text-bold">{{ payment.type }}</p>
       <wise-logo />
     </div>
 
     <div class="payment-card__detail">
       <div class="card-row">
         <p class="text-secondary text-medium">Account name:</p>
-        <p class="text-dark text-bold">Barly Vallendito</p>
+        <p class="text-dark text-bold">{{ payment.accounttName }}</p>
       </div>
       <div class="card-row">
         <p class="text-secondary text-medium">Account number:</p>
-        <p class="text-dark text-bold">9700 0023 4200 2900</p>
+        <p class="text-dark text-bold">{{ payment.accountNumber }}</p>
       </div>
       <div class="card-row">
         <p class="text-secondary text-medium">Routing number:</p>
-        <p class="text-dark text-bold">084009519</p>
+        <p class="text-dark text-bold">{{ payment.routingNo }}</p>
       </div>
     </div>
   </div>
@@ -26,12 +26,18 @@
 import { defineComponent } from "vue";
 import WiseLogo from "../Icons/WiseLogo.vue";
 
-export default defineComponent({
+export default {
   name: "PaymentCard",
 
   components: { WiseLogo },
-  setup() {},
-});
+
+  props: {
+    payment: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

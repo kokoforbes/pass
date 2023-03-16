@@ -2,19 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <app-navbar />
     <q-page-container class="container">
-      <Suspense>
-        <router-view />
-        <template #fallback>
-          <div class="loader">
-            <q-circular-progress
-              indeterminate
-              size="5rem"
-              color="primary"
-              class="q-ma-md"
-            />
-          </div>
-        </template>
-      </Suspense>
+      <router-view />
     </q-page-container>
     <bottom-navbar v-if="width <= 1000" />
   </q-layout>
@@ -48,14 +36,6 @@ export default defineComponent({
   max-width: $max-width;
   @media (max-width: 1000px) {
     padding-bottom: 50px;
-  }
-
-  .loader {
-    min-width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 </style>

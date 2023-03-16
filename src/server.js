@@ -2,12 +2,14 @@ import { createServer, Model } from "miragejs";
 
 export function makeServer({ environment = "development" } = {}) {
   let server = createServer({
+    environment,
+
     models: {
-      invoice: Model,
+      user: Model,
     },
 
     seeds(server) {
-      server.create("invoices", {
+      server.create("user", {
         id: "inv-2022-010",
         totalAmount: 4800,
         totalTax: 0,
@@ -33,14 +35,12 @@ export function makeServer({ environment = "development" } = {}) {
             country: "Indonesia",
           },
         },
-
         payment: {
           type: "wire transfer",
           accounttName: "Barly Vallendito",
           accountNumber: "9700 0023 4300 2900",
           routingNo: "084009519",
         },
-
         items: [
           {
             id: "1",
@@ -58,9 +58,8 @@ export function makeServer({ environment = "development" } = {}) {
     routes() {
       this.namespace = "api";
 
-      this.get("api/invoice/:id", (schema, request) => {
-        let id = request.params.id;
-        return schema.invoices.find(id);
+      this.get("/invoice", (schema) => {
+        return schema.users.all();
       });
     },
   });
